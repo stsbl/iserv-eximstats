@@ -1,0 +1,23 @@
+{# src/Stsbl/EximStatsBundle/Resources/views/Default/index.html.twig #}
+{% extends 'IServAdminBundle::page.html.twig' %}
+
+{% block page_title %}
+    {{ _('E-Mail server statistics') }} - {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% if app.environment != 'prod' %}
+        <!-- {{ _self }} => email-stats.css -->
+    {% endif %}
+    {% stylesheets output='css/compiled/email-stats.css' '@StsblEximStatsBundle/Resources/public/css/email-stats.less' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block page_content_wrapper %}
+    <div class="embed-responsive embed-stats">
+        <iframe src="{{ path('admin_eximstats_display_index') }}" name="embedded" class="embed-responsive-item"></iframe>
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+# Directory for exim statistics
+MkDir 0755 root:root /var/www/eximstats
+MkDir 0755 root:root /var/www/eximstats/charts
+
+Test "initialize exim statistics" 
+  "[ -f '/var/www/eximstats/index.html' ]"
+  "eximstats -html=/var/www/eximstats/index.html -emptyok -charts \
+     -chartdir /var/www/eximstats/charts -chartrel charts \
+     /var/log/exim4/mainlog{,-*}"
+

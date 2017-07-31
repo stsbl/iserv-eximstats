@@ -1,0 +1,28 @@
+# TRANSLATION CATALOG OF STSBL-ISERV-EXIMSTATS.
+# Copyright (C) 2017 Stadtteilschule Blankenese
+# This file is distributed under the same license as the stsbl-iserv-eximstats package.
+# Stadtteilschule Blankenese <repository@stsbl.de>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: stsbl-iserv-eximstats\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-27 17:47+0200\n"
+"PO-Revision-Date: 2017-07-27 17:47+0200\n"
+"Last-Translator: root <repository@stsbl.de>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: /tmp/eximstats-StsblEximStatsBundle.twig.php:56
+#: src/Stsbl/EximStatsBundle/EventListener/MenuListener.php:24
+#: src/Stsbl/EximStatsBundle/Controller/DefaultController.php:86
+msgid "E-Mail server statistics"
+msgstr "E-Mail-Server Statistiken"
+
+#: src/Stsbl/EximStatsBundle/Controller/DefaultController.php:56
+msgid "There are no statistics available yet."
+msgstr "Es sind noch keine Statistiken verfügbar."

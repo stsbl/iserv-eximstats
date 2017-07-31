@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+# refresh exim statistics
+eximstats -html=/var/www/eximstats/index.html -emptyok -charts \
+  -chartdir /var/www/eximstats/charts -chartrel charts \
+  /var/log/exim4/mainlog{,-*}

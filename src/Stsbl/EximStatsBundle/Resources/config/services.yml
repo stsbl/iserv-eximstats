@@ -1,0 +1,5 @@
+services:
+    stsbl.eximstats.menu:
+        class: Stsbl\EximStatsBundle\EventListener\MenuListener
+        tags:
+          - { name: kernel.event_listener, event: iserv_portal.menu_admin, method: onBuildAdminMenu }
