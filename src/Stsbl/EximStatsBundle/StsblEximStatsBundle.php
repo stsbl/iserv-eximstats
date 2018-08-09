@@ -1,5 +1,5 @@
 <?php
-
+// src/IServ/EximStatsBundle/StsblEximStatsBundle.php
 namespace Stsbl\EximStatsBundle;
 
 use IServ\CoreBundle\Routing\AutoloadRoutingBundleInterface;

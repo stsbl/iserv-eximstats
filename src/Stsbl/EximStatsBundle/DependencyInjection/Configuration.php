@@ -1,5 +1,5 @@
 <?php
-
+// src/IServ/EximStatsBundle/DependencyInjection/Configuration.php
 namespace Stsbl\EximStatsBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;

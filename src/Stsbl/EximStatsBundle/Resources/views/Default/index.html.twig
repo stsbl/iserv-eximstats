@@ -11,9 +11,7 @@
     {% if app.environment != 'prod' %}
         <!-- {{ _self }} => email-stats.css -->
     {% endif %}
-    {% stylesheets output='css/compiled/email-stats.css' '@StsblEximStatsBundle/Resources/public/css/email-stats.less' filter='cssrewrite' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/email-stats.css', 'stsbl-exim-stats') }}" />
 {% endblock %}
 
 {% block page_content_wrapper %}
