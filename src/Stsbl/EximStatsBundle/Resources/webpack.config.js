@@ -5,7 +5,7 @@ let baseConfig = require(path.join(process.env.WEBPACK_BASE_PATH, 'webpack.confi
 
 let webpackConfig = {
     entry: {
-        'css/email-stats.css': './assets/less/email-stats.less',
+        'css/email-stats': './assets/less/email-stats.less',
     },
 };
 
