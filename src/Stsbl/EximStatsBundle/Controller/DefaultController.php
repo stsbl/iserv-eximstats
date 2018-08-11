@@ -1,13 +1,13 @@
 <?php
-
+// src/IServ/EximStatsBundle/Controller/DefaultController.php
 namespace Stsbl\EximStatsBundle\Controller;
 
-use IServ\CoreBundle\Controller\PageController;
+use IServ\CoreBundle\Controller\AbstractPageController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /*
  * The MIT License
@@ -36,7 +36,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @Route("/admin/eximstats")
  */
-class DefaultController extends PageController
+class DefaultController extends AbstractPageController
 {
     /**
      * @Route("/display/{page}", name="admin_eximstats_display", requirements={"page"=".+"})
@@ -48,31 +48,34 @@ class DefaultController extends PageController
      */
     public function displayAction(Request $request, $page = null)
     {
-        $fn = "/var/www/eximstats/" . $page;
+        $file = '/var/www/eximstats/' . $page;
 
-        if (is_dir($fn)) {
-            $fn .= "/index.html";
-            if (!file_exists($fn)) {
-                return new Response("<body><p>" . _("There are no statistics available yet.") . "</p></body>");
+        if (is_dir($file)) {
+            $file .= "/index.html";
+            if (!file_exists($file)) {
+                return new Response("<body><p>" . _('There are no statistics available yet.') . "</p></body>");
             }
         }
 
-        if($page == null) {
+        if (null === $page) {
             return $this->redirect($request->getUri(). '/index.html');
         }
 
-        if (!file_exists($fn)) {
+        if (!file_exists($file)) {
             throw $this->createNotFoundException('Requested page was not found.');
         }
 
-        if (strpos(realpath($fn), '/var/www/eximstats') !== 0) {
-            throw $this->createAccessDeniedException('You are not allowed to access files outside of /var/www/eximstats directory');
+        if (strpos(realpath($file), '/var/www/eximstats') !== 0) {
+            throw $this->createAccessDeniedException(
+                'You are not allowed to access files outside of /var/www/eximstats directory'
+            );
         }
 
-        $file = new File($fn);
+        $file = new File($file);
         $response = new Response();
         $response->headers->set('Content-Type', $file->getMimeType());
-        $response->setContent(file_get_contents($fn));
+        $response->setContent(file_get_contents($file));
+
         return $response;
     }
 
