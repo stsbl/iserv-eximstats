@@ -38,6 +38,8 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class DefaultController extends AbstractPageController
 {
+    const BASE_PATH = '/var/www/eximstats';
+
     /**
      * @Route("/display/{page}", name="admin_eximstats_display", requirements={"page"=".+"})
      * @Route("/display", name="admin_eximstats_display_index")
@@ -48,11 +50,16 @@ class DefaultController extends AbstractPageController
      */
     public function displayAction(Request $request, string $page = null): Response
     {
-        $file = '/var/www/eximstats/' . $page;
+        $path = self::BASE_PATH;
+        if (null !== $page) {
+            $path .= '/' . $page;
+        }
 
-        if (is_dir($file)) {
-            $file .= "/index.html";
-            if (!file_exists($file)) {
+        $file = new File($path, false);
+
+        if ($file->isDir()) {
+            $file = new File($file->getRealPath() . '/index.html');
+            if (!$file->isFile()) {
                 return new Response("<body><p>" . _('There are no statistics available yet.') . "</p></body>");
             }
         }
@@ -61,20 +68,19 @@ class DefaultController extends AbstractPageController
             return $this->redirect($request->getUri(). '/index.html');
         }
 
-        if (!file_exists($file)) {
+        if (!$file->isFile()) {
             throw $this->createNotFoundException('Requested page was not found.');
         }
 
-        if (strpos(realpath($file), '/var/www/eximstats') !== 0) {
+        if (strpos($file->getRealPath(), self::BASE_PATH) !== 0) {
             throw $this->createAccessDeniedException(
-                'You are not allowed to access files outside of /var/www/eximstats directory'
+                'You are not allowed to access files outside of /var/www/eximstats directory.'
             );
         }
 
-        $file = new File($file);
         $response = new Response();
         $response->headers->set('Content-Type', $file->getMimeType());
-        $response->setContent(file_get_contents($file));
+        $response->setContent(file_get_contents($file->getRealPath()));
 
         return $response;
     }

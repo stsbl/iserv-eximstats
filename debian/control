@@ -14,6 +14,7 @@ Depends: ${misc:Depends},
   exim4-base,
   iserv-portal,
   iserv3-core,
+  libgd-graph-perl,
   stsbl-iserv3-maintenance,
 Xb-Private-IServ-Revision: ${iserv:Revision}
 Description: E-Mail-Server-Statistiken für IServ
