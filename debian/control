@@ -7,7 +7,7 @@ Build-Depends-Indep: iserv3-dev
 Standards-Version: 4.2.1
 Homepage: https://it.stsbl.de/documentation/mods/stsbl-iserv-eximstats
 
-Package: stsbl-iserv-file-distribution
+Package: stsbl-iserv-eximstats
 Architecture: all
 Depends: ${misc:Depends},
   ${perl:Depends},
