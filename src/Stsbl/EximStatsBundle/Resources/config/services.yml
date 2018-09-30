@@ -1,5 +1,13 @@
+# src/Stsbl/EximStatsBundle/Resources/config/services.yml
 services:
-    stsbl.eximstats.menu:
-        class: Stsbl\EximStatsBundle\EventListener\MenuListener
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    Stsbl\EximStatsBundle\:
+        resource: '../../*'
+
+    Stsbl\EximStatsBundle\EventListener\MenuListener:
         tags:
           - { name: kernel.event_listener, event: iserv_portal.menu_admin, method: onBuildAdminMenu }

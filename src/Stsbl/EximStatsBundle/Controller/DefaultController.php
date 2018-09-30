@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 // src/IServ/EximStatsBundle/Controller/DefaultController.php
 namespace Stsbl\EximStatsBundle\Controller;
 
@@ -46,7 +46,7 @@ class DefaultController extends AbstractPageController
      * @param string $page
      * @return Response
      */
-    public function displayAction(Request $request, $page = null)
+    public function displayAction(Request $request, string $page = null): Response
     {
         $file = '/var/www/eximstats/' . $page;
 
@@ -81,10 +81,10 @@ class DefaultController extends AbstractPageController
 
     /**
      * @Route("", name="admin_eximstats_index")
-     * @Template()
+     * @Template("@StsblEximStats/Default/index.html.twig")
      * @return array
      */
-    public function indexAction()
+    public function indexAction(): array
     {
         $this->addBreadcrumb(_('E-Mail server statistics'));
 

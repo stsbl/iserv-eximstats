@@ -1,14 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 // src/Stsbl/EximStatsBundle/EventListener/MenuListener.php
 namespace Stsbl\EximStatsBundle\EventListener;
 
 use IServ\CoreBundle\Event\MenuEvent;
 use IServ\AdminBundle\EventListener\AdminMenuListenerInterface;
 
-/**
- * Class MenuListener
- * @package IServ\SysmonBundle\EventListener
- */
 class MenuListener implements AdminMenuListenerInterface
 {
     /**
@@ -17,15 +13,16 @@ class MenuListener implements AdminMenuListenerInterface
      */
     public function onBuildAdminMenu(MenuEvent $event)
     {
-    	$menu = $event->getMenu();
+        $menu = $event->getMenu();
+        $block = $menu->getChild(self::ADMIN_NETWORK);
+        $block->addChild(
+            'admin_eximstats',
+            ['route' => 'admin_eximstats_index', 'label' => _('E-Mail server statistics')]
+        )
+            ->setExtra('orderNumber', 99)
+            ->setExtra('icon', 'mail')
+        ;
 
-    	$block = $menu->getChild(self::ADMIN_NETWORK);
-
-    	$block->addChild('admin_eximstats', array('route' => 'admin_eximstats_index', 'label' => _('E-Mail server statistics')))
-    	   ->setExtra('orderNumber', 99)
-    	   ->setExtra('icon', 'mail')
-    	;
-
-    	return $menu;
+        return $menu;
     }
 }
