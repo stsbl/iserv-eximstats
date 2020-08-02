@@ -1,3 +1,10 @@
+stsbl-iserv-eximstats (20.08.02-1) testing; urgency=medium
+
+  * Bumped copyright
+  * Updated locale handling to use genpo
+
+ -- Felix Jacobi <Felix@jacobi-hamburg.net>  Sun, 02 Aug 2020 06:41:03 +0200
+
 stsbl-iserv-eximstats (18.11.25-1) experimental; urgency=medium
 
   * Adapted module structure to web application move
