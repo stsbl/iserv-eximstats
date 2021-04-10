@@ -2,21 +2,20 @@ Source: stsbl-iserv-eximstats
 Section: misc
 Priority: optional
 Maintainer: Stadtteilschule Blankenese <repository@stsbl.de>
-Build-Depends: debhelper (>= 10)
-Build-Depends-Indep: iserv-buildtools
-Standards-Version: 4.2.1
+Build-Depends: debhelper-compat (= 13), dh-sequence-iserv, dh-sequence-stsbl
+Standards-Version: 4.5.0
 Homepage: https://it.stsbl.de/documentation/mods/stsbl-iserv-eximstats
 
 Package: stsbl-iserv-eximstats
 Architecture: all
-Depends: ${misc:Depends},
-  ${perl:Depends},
-  exim4-base,
-  iserv-portal,
-  iserv3-core,
-  libgd-graph-perl,
-  stsbl-iserv3-maintenance,
-Xb-Private-IServ-Revision: ${iserv:Revision}
+Depends: exim4-base,
+         iserv-portal,
+         iserv3-core,
+         libgd-graph-perl,
+         stsbl-iserv3-maintenance,
+         ${misc:Depends},
+         ${perl:Depends}
+Xb-Private-Iserv-Revision: ${iserv:Revision}
 Description: E-Mail-Server-Statistiken für IServ
  Stellt unter Verwaltung > Netzwerk > E-Mail-Server-Statistiken eine
  Statistik über empfangene und versendete E-Mails zur Verfügung.
