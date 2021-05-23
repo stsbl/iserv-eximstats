@@ -1,13 +1,15 @@
-<?php declare(strict_types = 1);
-// src/IServ/EximStatsBundle/Controller/DefaultController.php
+<?php
+
+declare(strict_types=1);
+
 namespace Stsbl\EximStatsBundle\Controller;
 
 use IServ\CoreBundle\Controller\AbstractPageController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /*
  * The MIT License
@@ -36,19 +38,15 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @Route("/admin/eximstats")
  */
-class DefaultController extends AbstractPageController
+final class DefaultController extends AbstractPageController
 {
-    const BASE_PATH = '/var/www/eximstats';
+    public const BASE_PATH = '/var/www/eximstats';
 
     /**
      * @Route("/display/{page}", name="admin_eximstats_display", requirements={"page"=".+"})
      * @Route("/display", name="admin_eximstats_display_index")
-     *
-     * @param Request $request
-     * @param string $page
-     * @return Response
      */
-    public function displayAction(Request $request, string $page = null): Response
+    public function display(Request $request, ?string $page = null): Response
     {
         $path = self::BASE_PATH;
         if (null !== $page) {
@@ -65,7 +63,7 @@ class DefaultController extends AbstractPageController
         }
 
         if (null === $page) {
-            return $this->redirect($request->getUri(). '/index.html');
+            return $this->redirect($request->getUri() . '/index.html');
         }
 
         if (!$file->isFile()) {

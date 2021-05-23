@@ -1,9 +1,12 @@
-<?php declare(strict_types = 1);
-// src/IServ/EximStatsBundle/StsblEximStatsBundle.php
+<?php
+
+declare(strict_types=1);
+
 namespace Stsbl\EximStatsBundle;
 
 use IServ\CoreBundle\Routing\AutoloadRoutingBundleInterface;
 use Stsbl\EximStatsBundle\DependencyInjection\StsblEximStatsExtension;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /*
@@ -30,12 +33,12 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * THE SOFTWARE.
  */
 
-class StsblEximStatsBundle extends Bundle implements AutoloadRoutingBundleInterface
+final class StsblEximStatsBundle extends Bundle implements AutoloadRoutingBundleInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function getContainerExtension()
+    public function getContainerExtension(): ?ExtensionInterface
     {
         return new StsblEximStatsExtension();
     }

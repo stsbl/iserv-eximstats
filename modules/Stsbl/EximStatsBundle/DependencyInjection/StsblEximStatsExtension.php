@@ -1,5 +1,7 @@
-<?php declare(strict_types = 1);
-// src/IServ/EximStatsBundle/DependencyInjection/StsblEximStatsExtension.php
+<?php
+
+declare(strict_types=1);
+
 namespace Stsbl\EximStatsBundle\DependencyInjection;
 
 use IServ\CoreBundle\DependencyInjection\IServBaseExtension;
@@ -33,6 +35,6 @@ use IServ\CoreBundle\DependencyInjection\IServBaseExtension;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class StsblEximStatsExtension extends IServBaseExtension
+final class StsblEximStatsExtension extends IServBaseExtension
 {
 }

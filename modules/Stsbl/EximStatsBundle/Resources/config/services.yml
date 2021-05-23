@@ -1,4 +1,3 @@
-# src/Stsbl/EximStatsBundle/Resources/config/services.yml
 services:
     _defaults:
         autoconfigure: true
