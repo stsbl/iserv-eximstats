@@ -16,7 +16,7 @@ final class MenuListener implements AdminMenuListenerInterface
     {
         $menu = $event->getMenu();
         $block = $menu->getChild(self::ADMIN_NETWORK);
-        $block->addChild(
+        $block?->addChild(
             'admin_eximstats',
             ['route' => 'admin_eximstats_index', 'label' => _('E-Mail server statistics')]
         )

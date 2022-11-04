@@ -70,7 +70,7 @@ final class DefaultController extends AbstractPageController
             throw $this->createNotFoundException('Requested page was not found.');
         }
 
-        if (strpos($file->getRealPath(), self::BASE_PATH) !== 0) {
+        if ($file->getRealPath() !== self::BASE_PATH && !str_starts_with($file->getRealPath(), self::BASE_PATH . '/')) {
             throw $this->createAccessDeniedException(
                 'You are not allowed to access files outside of /var/www/eximstats directory.'
             );
