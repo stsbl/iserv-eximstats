@@ -17,9 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: modules/Stsbl/EximStatsBundle/Controller/DefaultController.php
 #: modules/Stsbl/EximStatsBundle/EventListener/MenuListener.php
-#: /tmp/twig2php-stsbl-iserv-eximstats/modules/Stsbl/EximStatsBundle/Resources/views/Default/index.html.twig.php
+#: modules/Stsbl/EximStatsBundle/Controller/DefaultController.php
+#: modules/Stsbl/EximStatsBundle/Resources/views/Default/index.html.twig.php
 msgid "E-Mail server statistics"
 msgstr "E-Mail-Server-Statistiken"
 

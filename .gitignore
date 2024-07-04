@@ -1,5 +1,4 @@
 /Makefile.iservmake
-/locale
 /system-locale
 !/locale/templates/*_misc.pot
 /public/assets
